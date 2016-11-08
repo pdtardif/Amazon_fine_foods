@@ -20,3 +20,6 @@ dictionary.filter_extremes(no_below = 20, no_above = 0.75, keep_n = None)
 
 corpus = [dictionary.doc2bow(doc) for doc in docs]
 
+lda = gm.models.ldamodel.LdaModel(corpus = corpus, id2word = dictionary, num_topics = 150)
+lda.save("lda.model")
+gm.corpora.MmCorpus.serialize('corpus.mm', corpus)
